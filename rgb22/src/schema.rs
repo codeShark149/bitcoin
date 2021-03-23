@@ -58,16 +58,19 @@ pub fn schema() -> Schema {
             FieldType::Name => DataFormat::String(256),
             // Data format for keeping identity-related information
             // TODO: (LNPBPs) Consider using MIME types
+            // Issue #37
             FieldType::DataFormat => DataFormat::Unsigned(Bits::Bit16, 0, core::u16::MAX as u128),
             // Identity-related information (like SSI)
             // TODO: Use data container to keep the actual log record
             //       matching the signature
+            // Issue #37
             FieldType::Data => DataFormat::Bytes(core::u16::MAX),
             // We allow signatures to be created with different cryptographic
             // methods, so keeping three fields to define them, instead of using
             // `Signature` data format (which will force all contracts to
             // use the same signature and cryptographic algorithm
             // TODO: Consider using DER format instead of using three fields
+            // Issue #37
             FieldType::UsedCryptography => DataFormat::Unsigned(Bits::Bit16, 0, core::u16::MAX as u128),
             FieldType::PublicKey => DataFormat::Bytes(core::u16::MAX),
             // Signature proving ownership over private key, matching the public
@@ -77,6 +80,7 @@ pub fn schema() -> Schema {
             // Schema, assets can't be issued in the past before RGB or Bitcoin
             // even existed; so we prohibit all the dates before RGB release
             // TODO: Update lower limit with the first RGB release
+            // Issue #37
             // Current lower time limit is 07/04/2020 @ 1:54pm (UTC)
             FieldType::ValidFrom => DataFormat::Integer(Bits::Bit64, 1593870844, core::i64::MAX as i128)
         },

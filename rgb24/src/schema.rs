@@ -64,6 +64,7 @@ pub fn schema() -> Schema {
     use Occurences::*;
 
     // TODO: Link signatures to identity
+    // Issue #39
 
     Schema {
         rgb_features: none!(),
@@ -72,6 +73,7 @@ pub fn schema() -> Schema {
             // Human-readable name registered with this schema
             FieldType::Name => DataFormat::String(256),
             // TODO: Consider using data container
+            // Issue #39
             FieldType::RicardianContract => DataFormat::String(core::u16::MAX),
             // Data formats for name resolution, like IP addresses, ONIONs etc.
             // Formats are registered by LNP/BP Association and maintained as
@@ -83,6 +85,7 @@ pub fn schema() -> Schema {
             // can't be issued in the past before RGB or Bitcoin even existed; so we prohibit
             // all the dates before RGB release
             // TODO: Update lower limit with the first RGB release
+            // Issue #39
             // Current lower time limit is 07/04/2020 @ 1:54pm (UTC)
             FieldType::ValidFrom => DataFormat::Integer(Bits::Bit64, 1593870844, core::i64::MAX as i128)
         },

@@ -29,6 +29,7 @@ use crate::schema;
 //       which may be used to correlate metadata with indexes of other
 //       metadata or state. Consider converting into `Vec` type like it was
 //       accomplished for the state data
+// Issue #47
 type MetadataInner = BTreeMap<schema::FieldType, BTreeSet<data::Revealed>>;
 
 /// Transition & genesis metadata fields

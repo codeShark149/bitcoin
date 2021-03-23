@@ -109,6 +109,7 @@ pub enum DataFormat {
     PublicKey(EllipticCurve, elliptic_curve::PointSerialization),
     Signature(elliptic_curve::SignatureAlgorithm),
     // TODO: Add externally stored data container id
+    // Issue #51
     // Container(BlobId, MIME, u64 /* AES encryption key / salt */),
     TxOutPoint,
     Tx,
@@ -139,6 +140,7 @@ impl DataFormat {
 
     // TODO: Add support later once bitcoin library will start supporting
     //       consensus-encoding of the native rust `u128` type
+    // Issue #46
     //#[inline]
     //pub fn u128() -> Self {
     //    Self::Unsigned(Bits::Bit128, 0, core::u128::MAX)
@@ -166,6 +168,7 @@ impl DataFormat {
 
     // TODO: Add support later once bitcoin library will start supporting
     //       consensus-encoding of the native rust `u128` type
+    // Issue #46
     //#[inline]
     //pub fn i128() -> Self {
     //    Self::Integer(Bits::Bit128, 0, core::i128::MAX)

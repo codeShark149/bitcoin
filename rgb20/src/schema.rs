@@ -136,6 +136,7 @@ pub fn schema() -> Schema {
 
     // TODO: Consider using data containers + state extensions for
     //       providing issuer-created asset meta-information
+    // Issue #33
 
     Schema {
         rgb_features: none!(),
@@ -305,6 +306,7 @@ pub fn schema() -> Schema {
             // the full contract text, where hash must be represented by a
             // hexadecimal string, optionally followed by `\n` and text URL
             // TODO: Consider using data container instead of the above ^^^
+            // Issue #33
             FieldType::RicardianContract => DataFormat::String(core::u16::MAX),
             FieldType::Precision => DataFormat::Unsigned(Bits::Bit8, 0, 18u128),
             // We need this b/c allocated amounts are hidden behind Pedersen
@@ -365,6 +367,7 @@ pub fn subschema() -> Schema {
     //       providing issuer-created asset meta-information
     // TODO: Consider adding Ricardian contracts to secondary issues and
     //       transfers
+    // Issue #33
 
     Schema {
         rgb_features: none!(),
@@ -509,6 +512,7 @@ pub fn subschema() -> Schema {
             // the full contract text, where hash must be represented by a
             // hexadecimal string, optionally followed by `\n` and text URL
             // TODO: Consider using data container instead of the above ^^^
+            // Issue #33
             FieldType::RicardianContract => DataFormat::String(core::u16::MAX),
             FieldType::Precision => DataFormat::Unsigned(Bits::Bit8, 0, 18u128),
             // We need this b/c allocated amounts are hidden behind Pedersen

@@ -130,6 +130,7 @@ impl Schema {
     }
 
     // TODO: Change with the adoption of Simplicity
+    // Issue #49
     #[inline]
     pub fn scripts(&self) -> SimplicityScript {
         vec![]
@@ -158,6 +159,7 @@ mod strict_encoding {
     };
 
     // TODO: Use derive macros and generalized `tagged_hash!` in the future
+    // Issue #50
     impl Strategy for SchemaId {
         type Strategy = strategies::Wrapped;
     }

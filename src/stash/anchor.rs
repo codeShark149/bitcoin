@@ -205,6 +205,7 @@ impl Anchor {
     ) -> Result<(Vec<Self>, HashMap<ContractId, usize>), Error> {
         // TODO: Adjust fee if the output does not contain a key marked for
         //       tweaking
+        // Issue #52
         let fee = psbt.fee()?;
 
         let tx = &mut psbt.global.unsigned_tx;
@@ -251,6 +252,7 @@ impl Anchor {
             )
             .map_err(|_| Error::WrongPubkeyData)?;
             // TODO: (new) Add support for Taproot parsing
+            // Issue #53
             let source = match psbt_out
                 .redeem_script
                 .as_ref()
@@ -263,6 +265,7 @@ impl Anchor {
             };
             // TODO: (new) Move parsing of the output+input into Descriptor impl
             // TODO: (new) With miniscript stabilization refactor this to use it
+            // Issue #54
             let method = if psbt_out.redeem_script.is_some() {
                 ScriptEncodeMethod::ScriptHash
             } else if psbt_out.witness_script.is_some() {
@@ -270,6 +273,7 @@ impl Anchor {
             } else {
                 // TODO: (new) Check PSBT whether pubkey output is witness and
                 //       return error otherwise
+                // Issue #55
                 ScriptEncodeMethod::WPubkeyHash
             };
 
@@ -303,6 +307,7 @@ impl Anchor {
                 .map(|output| {
                     // TODO: Provide full state transition information for the 
                     //       signer with serialized `Roll`
+                    // Issue #56
                     output.proprietary.insert(
                         ProprietaryKey {
                             prefix: PSBT_PREFIX.to_vec(),
@@ -355,6 +360,7 @@ impl Anchor {
         let protocol_factor = protocol_factor.low_u64() as u32;
 
         // TODO: Refactor multimessage commitments
+        // Isssue #57
         let mm_buffer: Vec<u8> = self
             .commitment
             .clone()
@@ -383,6 +389,7 @@ impl Anchor {
         value: sha256::Hash,
     ) -> Result<bool, dbc::Error> {
         // TODO: Refactor using bp::seals
+        // Issue #58
         let container =
             TxContainer::reconstruct(&self.proof, &supplement, &tx)?;
         let commitment = TxCommitment::from(tx.clone());

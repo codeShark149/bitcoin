@@ -43,6 +43,7 @@ pub enum Validity {
 )]
 #[strict_encoding_crate(lnpbp::strict_encoding)]
 // TODO: Display via YAML
+// Issue #42
 #[display(Debug)]
 pub struct Status {
     pub unresolved_txids: Vec<Txid>,
@@ -62,6 +63,7 @@ impl AddAssign for Status {
 
 // TODO: (new) With rust `try_trait` stabilization re-implement using
 //       `Try` trait
+// Issue #43
 // impl Try for Status {
 //    type Ok = Status;
 //    type Error = Failure;
@@ -139,6 +141,7 @@ impl Status {
 )]
 #[strict_encoding_crate(lnpbp::strict_encoding)]
 // TODO: (v0.3) convert to detailed error description using doc_comments
+// Issue #44
 #[display(Debug)]
 pub enum Failure {
     SchemaUnknown(SchemaId),
@@ -255,6 +258,7 @@ pub enum Failure {
 )]
 #[strict_encoding_crate(lnpbp::strict_encoding)]
 // TODO: (v0.3) convert to detailed descriptions using doc_comments
+// Issue #44
 #[display(Debug)]
 pub enum Warning {
     EndpointDuplication(NodeId, SealEndpoint),
@@ -272,6 +276,7 @@ pub enum Warning {
 )]
 #[strict_encoding_crate(lnpbp::strict_encoding)]
 // TODO: (v0.3) convert to detailed descriptions using doc_comments
+// Issue #44
 #[display(Debug)]
 pub enum Info {
     UncheckableConfidentialStateData(NodeId, usize),
@@ -646,6 +651,7 @@ impl<'validator, R: TxResolver> Validator<'validator, R> {
     }
 
     // TODO: Move part of logic into single-use-seals and bitcoin seals
+    // Issue #45
     fn validate_witness_input(
         &mut self,
         witness_tx: &Transaction,

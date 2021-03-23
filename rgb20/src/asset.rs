@@ -46,6 +46,7 @@ pub enum Error {
 }
 
 // TODO: Add support for renominations, burn & replacements
+// Issue #31
 /// Detailed RGB20 asset information
 #[cfg_attr(
     feature = "serde",
@@ -110,6 +111,7 @@ pub struct Asset {
     )]
     // TODO: Transform into method iterating and collecting this information
     //       from `known_issues`
+    // Issue #32
     known_inflation: BTreeMap<OutPoint, AtomicValue>,
 
     /// Specifies outpoints controlling certain amounts of assets.

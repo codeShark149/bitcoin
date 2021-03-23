@@ -49,6 +49,7 @@ pub fn schema() -> Schema {
     use Occurences::*;
 
     // TODO: Link signatures to identity
+    // Issue #38
 
     Schema {
         rgb_features: none!(),
@@ -57,16 +58,19 @@ pub fn schema() -> Schema {
             // Human-readable name for UI
             FieldType::Name => DataFormat::String(256),
             // TODO: Consider using data container
+            // Issue #38
             FieldType::RicardianContract => DataFormat::String(core::u16::MAX),
             // TODO: (LNPBPs) Consider using MIME types
             FieldType::DataFormat => DataFormat::Unsigned(Bits::Bit16, 0, core::u16::MAX as u128),
             // TODO: Use data container to keep the actual log record
             //       matching the signature
+            // Issue #38
             FieldType::Data => DataFormat::Bytes(core::u16::MAX),
             // While UNIX timestamps allow negative numbers; in context of RGB Schema, assets
             // can't be issued in the past before RGB or Bitcoin even existed; so we prohibit
             // all the dates before RGB release
             // TODO: Update lower limit with the first RGB release
+            // Issue #38
             // Current lower time limit is 07/04/2020 @ 1:54pm (UTC)
             FieldType::StartsFrom => DataFormat::Integer(Bits::Bit64, 1593870844, core::i64::MAX as i128)
         },

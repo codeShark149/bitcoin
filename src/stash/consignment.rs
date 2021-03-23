@@ -34,9 +34,11 @@ use crate::{
 pub type ConsignmentEndpoints = Vec<(NodeId, SealEndpoint)>;
 // TODO: Current strict encoding procedure limits transition history to u16::MAX
 //       which is insufficient. Upgrade it to use larger array size
+// Issue #59
 pub type TransitionData = Vec<(Anchor, Transition)>;
 // TODO: Current strict encoding procedure limits extension history to u16::MAX
 //       which is insufficient. Upgrade it to use larger array size
+// Issue #59
 pub type ExtensionData = Vec<Extension>;
 
 pub const RGB_CONSIGNMENT_VERSION: u16 = 0;
@@ -150,6 +152,7 @@ impl FromStr for Consignment {
 }
 
 // TODO: Implement different conceal procedures for the consignment
+// Issue #60
 
 impl Consignment {
     #[inline]
@@ -319,6 +322,7 @@ pub(crate) mod test {
     #[test]
     fn test_consignment_id_midstate() {
         // TODO: Do the actual consignment verification testing
+        // Issue #61
         let midstate = tagged_hash::Midstate::with(b"rgb:consignment");
         assert_eq!(**midstate, MIDSTATE_CONSIGNMENT_ID);
     }

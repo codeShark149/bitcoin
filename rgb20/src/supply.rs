@@ -429,3 +429,4 @@ impl BurnReplace {
 // TODO: Define consistency trait with operations like `is_consistent` and
 //       `make_consistent`, checking internal consistency of the denormalized
 //       data within each type of the RGB20 structures
+// Issue #34

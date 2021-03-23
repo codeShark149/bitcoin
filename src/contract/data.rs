@@ -70,6 +70,7 @@ pub enum Revealed {
     U64(u64),
     // TODO: Add support later once bitcoin library will start supporting
     //       consensus-encoding of the native rust `u128` type
+    // Issue #46
     // U128(u128),
     I8(i8),
     I16(i16),
@@ -77,6 +78,7 @@ pub enum Revealed {
     I64(i64),
     // TODO: Add support later once bitcoin library will start supporting
     //       consensus-encoding of the native rust `i128` type
+    // Issue #46
     // I128(i128),
     F32(f32),
     F64(f64),
@@ -111,6 +113,7 @@ pub enum Revealed {
     Ed25519Signature(ed25519_dalek::Signature),
     // TODO: Add support for Schnorr's signatures once they will be
     //       implemented in rust-secp256k1
+    // Issue #46
     TxOutPoint(OutPoint),
     Tx(Transaction),
     Psbt(PartiallySignedTransaction),

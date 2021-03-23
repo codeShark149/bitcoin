@@ -56,6 +56,7 @@ impl sha256t::Tag for NodeIdTag {
 }
 
 // TODO: Refactor all ids into a single style after `ConsignmentId`
+// Issue #48
 /// Unique node (genesis, extensions & state transition) identifier equivalent
 /// to the commitment hash
 #[cfg_attr(
